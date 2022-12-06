@@ -11,7 +11,8 @@ const product = data.value;
 <template>
   <div>
     <h1>{{product.fields.title}}</h1>
-    <img 
+    <img
+    v-if="product.fields.image" 
     :src="`${product.fields.image?.fields.file.url}`"
     />
     <p>Price: {{product.fields.price}}</p>
