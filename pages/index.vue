@@ -1,11 +1,27 @@
 <script setup>
-const { data } = await useFetch('/api/tickers?limit=10')
+const config = useRuntimeConfig();
+
+const { data } = await useAsyncData('product', async(nuxtApp) => {
+  const { $contentfulClient } = nuxtApp
+  return await $contentfulClient.getEntries({
+    content_type:'product'
+  })
+})
+
+const items = data.value.items;
+console.log(items);
 </script>
 
 <template>
 <main>
-  <h1>Index Page</h1>
-  <table border="1 px solid">
+  <h1>Ryan's Garage Sale</h1>
+  <div v-for="product in items"> 
+    <h1>{{product.fields.title}}</h1>
+    <p>{{product.fields.price}}</p>
+    <p>{{product.fields.description.content[0].content[0].value}}</p>
+  </div>
+  <p></p>
+  <!-- <table border="1 px solid">
     <thead>
       <tr>
         <th>Name</th>
@@ -22,6 +38,6 @@ const { data } = await useFetch('/api/tickers?limit=10')
         <NuxtLink :to="('/currency/' + currency.id)"> {{ currency.id }}</NuxtLink>
       </td>
     </tr>
-  </table>
+  </table> -->
 </main>
 </template>

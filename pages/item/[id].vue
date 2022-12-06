@@ -1,12 +1,12 @@
 <script setup>
-const route = useRoute();
-const { data } = await useFetch('/api/ticker?id=' + route.params.id);
-const coin = data.value[0];
+// const route = useRoute();
+// const { data } = await useFetch('/api/ticker?id=' + route.params.id);
+// const coin = data.value[0];
 </script>
 
 <template>
   <div>
-    <h2>{{( coin.name )}} Details</h2>
+    <!-- <h2>{{( coin.name )}} Details</h2>
     <table border="1 px solid">
       <thead>
         <th>Symbol</th>
@@ -20,6 +20,6 @@ const coin = data.value[0];
         <td>{{ coin.price_usd }}</td>
         <td>{{ coin.market_cap_usd }}</td>
       </tr>
-    </table>
+    </table> -->
   </div>
 </template>
