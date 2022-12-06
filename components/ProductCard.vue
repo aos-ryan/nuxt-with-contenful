@@ -1,5 +1,9 @@
 <script setup>
 const props = defineProps({
+  id: {
+    type: String,
+    required: true,
+  },
   title: {
     type: String,
     required: true,
@@ -19,18 +23,23 @@ const props = defineProps({
 </script>
 
 <template>
-      <h1>{{props.title}}</h1>
-      <p>{{props.price}}</p>
-      <p>{{props.description}}</p>
-      <img 
-      v-if="props.imageUrl"
-      :src="`${props.imageUrl}`" 
-      />
+      <NuxtLink :to="(/item/ + props.id)" class="product-link">
+        <h1>{{props.title}}</h1>
+        <p>{{props.price}}</p>
+        <p>{{props.description}}</p>
+        <img 
+        v-if="props.imageUrl"
+        :src="`${props.imageUrl}`" 
+        />
+      </NuxtLink>
 </template>
 <style scoped>
-
 img {
   height: 200px;
   width: 250px;
+}
+.product-link {
+  text-decoration: none;
+  color:black;
 }
 </style>

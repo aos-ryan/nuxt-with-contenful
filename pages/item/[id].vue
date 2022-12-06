@@ -1,25 +1,27 @@
 <script setup>
-// const route = useRoute();
-// const { data } = await useFetch('/api/ticker?id=' + route.params.id);
-// const coin = data.value[0];
+const route = useRoute();
+
+const { data } = await useAsyncData('product', async(nuxtApp) => {
+  const { $contentfulClient } = nuxtApp
+  return await $contentfulClient.getEntry(route.params.id)
+});
+const product = data.value;
 </script>
 
 <template>
   <div>
-    <!-- <h2>{{( coin.name )}} Details</h2>
-    <table border="1 px solid">
-      <thead>
-        <th>Symbol</th>
-        <th>Rank</th>
-        <th>Price - USD</th>
-        <th>Market Cap - USD</th>
-      </thead>
-      <tr>
-        <td>{{ coin.symbol }}</td>
-        <td>{{ coin.rank }}</td>
-        <td>{{ coin.price_usd }}</td>
-        <td>{{ coin.market_cap_usd }}</td>
-      </tr>
-    </table> -->
+    <h1>{{product.fields.title}}</h1>
+    <img 
+    :src="`${product.fields.image?.fields.file.url}`"
+    />
+    <p>Price: {{product.fields.price}}</p>
+    <p>Description: {{product.fields.description.content[0].content[0].value}}</p>
   </div>
 </template>
+
+<style scoped>
+img {
+  height: 200px;
+  width: 250px;
+}
+</style>
