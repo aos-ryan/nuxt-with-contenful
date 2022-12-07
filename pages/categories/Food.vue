@@ -1,10 +1,6 @@
 <script setup>
 import ProductCard from '~/components/ProductCard.vue';
 
-// "3WKEHHPrJWwgNXxwDFruCE" = animals
-// "6AaDOGCsuSQvzDbYlJKS0u" = food
-// 'fields.category.sys.id': category = query object option to filter by category
-
 const { data } = await useAsyncData('products', async(nuxtApp) => {
   const { $contentfulClient } = nuxtApp
   return await $contentfulClient.getEntries({
