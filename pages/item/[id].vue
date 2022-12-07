@@ -10,6 +10,7 @@ const product = data.value;
 </script>
 
 <template>
+<main>
   <div>
     <h1>{{product.fields.title}}</h1>
     <img
@@ -19,6 +20,7 @@ const product = data.value;
     <p>Price: {{product.fields.price}}</p>
     <p>Description: {{product.fields.description.content[0].content[0].value}}</p>
   </div>
+</main>
 </template>
 
 <style scoped>

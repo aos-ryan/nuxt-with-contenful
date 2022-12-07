@@ -18,6 +18,7 @@ const items = data.value.items;
 </script>
 
 <template>
+  <main>
   <header>Food</header>
   <div class="product-container">
     <div class="product-card" v-for="product in items" :key="product.sys.id"> 
@@ -30,6 +31,7 @@ const items = data.value.items;
       ></ProductCard>
     </div>
   </div>
+</main>
 </template>
 
 <style scoped>
