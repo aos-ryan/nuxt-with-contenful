@@ -17,11 +17,6 @@ const items = data.value.items;
 </script>
 
 <template>
-  <div class="category-nav">
-    <!-- <NuxtLink :to="/index/">All Products</NuxtLink>
-    <NuxtLink :to="/cat/ + '3WKEHHPrJWwgNXxwDFruCE'"> Animals</NuxtLink>
-    <NuxtLink :to="/cat/ + '6AaDOGCsuSQvzDbYlJKS0u'"> Food</NuxtLink> -->
-  </div>
   <div class="product-container">
     <div class="product-card" v-for="product in items" :key="product.sys.id"> 
       <ProductCard
