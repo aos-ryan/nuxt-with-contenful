@@ -1,14 +1,11 @@
 <script setup>
-import ProductCard from './ProductCard.vue';
-
-// "3WKEHHPrJWwgNXxwDFruCE" = animals
-// "6AaDOGCsuSQvzDbYlJKS0u" = food
-// 'fields.category.sys.id': category = query object option to filter by category
+import ProductCard from '~/components/ProductCard.vue';
 
 const { data } = await useAsyncData('products', async(nuxtApp) => {
   const { $contentfulClient } = nuxtApp
   return await $contentfulClient.getEntries({
     content_type:'product',
+    'fields.category.sys.id': '3WKEHHPrJWwgNXxwDFruCE'
   })
 });
 
@@ -17,6 +14,7 @@ const items = data.value.items;
 </script>
 
 <template>
+  <header>Food</header>
   <div class="product-container">
     <div class="product-card" v-for="product in items" :key="product.sys.id"> 
       <ProductCard

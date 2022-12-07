@@ -1,10 +1,9 @@
 <script setup>
-import ProductList from '../components/ProductList.vue';
+import AllProducts from '../components/AllProducts.vue';
 </script>
 
 <template>
-  <h1> Ryan's Garage Sale - All Products </h1>
-  <ProductList />
+  <AllProducts />
 </template>
 
 <style scoped>
