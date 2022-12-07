@@ -1,17 +1,27 @@
 <script setup>
 import ProductCard from './ProductCard.vue';
 
+// "3WKEHHPrJWwgNXxwDFruCE" = animals
+// "6AaDOGCsuSQvzDbYlJKS0u" = food
+// 'fields.category.sys.id': category = query object option to filter by category
+
 const { data } = await useAsyncData('products', async(nuxtApp) => {
   const { $contentfulClient } = nuxtApp
   return await $contentfulClient.getEntries({
-    content_type:'product'
+    content_type:'product',
   })
 });
 
 const items = data.value.items;
+
 </script>
 
 <template>
+  <div class="category-nav">
+    <!-- <NuxtLink :to="/index/">All Products</NuxtLink>
+    <NuxtLink :to="/cat/ + '3WKEHHPrJWwgNXxwDFruCE'"> Animals</NuxtLink>
+    <NuxtLink :to="/cat/ + '6AaDOGCsuSQvzDbYlJKS0u'"> Food</NuxtLink> -->
+  </div>
   <div class="product-container">
     <div class="product-card" v-for="product in items" :key="product.sys.id"> 
       <ProductCard
@@ -28,6 +38,9 @@ const items = data.value.items;
 <style scoped>
 .product-container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-top: 10px;
 }
 .product-card {
   padding: 20px;

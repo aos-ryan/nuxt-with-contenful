@@ -6,6 +6,7 @@ const { data } = await useAsyncData('product', async(nuxtApp) => {
   return await $contentfulClient.getEntry(route.params.id)
 });
 const product = data.value;
+
 </script>
 
 <template>

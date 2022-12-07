@@ -19,7 +19,8 @@ const props = defineProps({
   imageUrl: {
     type: String,
   },
-})
+});
+
 </script>
 
 <template>
@@ -29,7 +30,7 @@ const props = defineProps({
         v-if="props.imageUrl"
         :src="`${props.imageUrl}`" 
         />
-        <p>{{props.price}}</p>
+        <p>${{props.price}}</p>
         <p>{{props.description}}</p>
       </NuxtLink>
 </template>
