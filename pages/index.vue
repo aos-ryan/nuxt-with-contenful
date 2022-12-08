@@ -1,18 +1,6 @@
 <script setup>
 import ProductCard from '~/components/ProductCard.vue';
-
-// "3WKEHHPrJWwgNXxwDFruCE" = animals
-// "6AaDOGCsuSQvzDbYlJKS0u" = food
-// 'fields.category.sys.id': category = query object option to filter by category
-
-const { data } = await useAsyncData('products', async(nuxtApp) => {
-  const { $contentfulClient } = nuxtApp
-  return await $contentfulClient.getEntries({
-    content_type:'product',
-  })
-});
-
-const items = data.value.items;
+const { data } = await useAsyncGql('allProducts');
 
 </script>
 
@@ -20,15 +8,15 @@ const items = data.value.items;
   <main>
   <header>All Products </header>
   <div class="product-container">
-    <div class="product-card" v-for="product in items" :key="product.sys.id"> 
+    <div class="product-card" v-for="product in data?.productCollection.items" :key="product.sys.id"> 
       <ProductCard
       :id="product.sys.id" 
-      :title="product.fields.title" 
-      :price="product.fields.price"
-      :description="product.fields.description.content[0].content[0].value"
-      :imageUrl="product.fields.image?.fields.file.url"
-      ></ProductCard>
-    </div>
+      :title="product.title" 
+      :price="product.price"
+      :description="product.description.json.content[0].content[0].value"
+      :imageUrl="product.image?.url"
+      ></ProductCard>   
+      </div>
   </div>
   </main>
 </template>

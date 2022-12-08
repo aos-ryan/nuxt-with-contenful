@@ -1,8 +1,52 @@
-query productEntryQuery {
-  product(id: "5WoG0OXBoinswltKF9fy9V") {
+query singleProduct ($id: String!) {
+  product(id: $id) {
     sys {
       id
     }
     title
+    price
+    description {
+      json
+    }
+    image {
+      url
+    }
+  }
+}
+
+query allProducts {
+  productCollection {
+    items {
+      sys {
+        id
+      }
+      title
+      price
+      description {
+        json
+      }
+      image {
+        url
+      }
+    }
+  }
+}
+query productsBySection ($id: String!) {
+  productSection (id: $id) {
+    productsCollection {
+      items {
+				sys {
+      		id
+    		}
+    		title
+    		price
+    		description {
+      		json
+    		}
+    		image {
+      		url
+    		}
+      }
+    }
   }
 }
