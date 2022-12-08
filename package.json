@@ -11,6 +11,7 @@
     "nuxt": "3.0.0"
   },
   "dependencies": {
-    "contentful": "^9.2.14"
+    "contentful": "^9.2.14",
+    "nuxt-graphql-client": "^0.2.22"
   }
 }

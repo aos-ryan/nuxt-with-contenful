@@ -1,0 +1,8 @@
+query productEntryQuery {
+  product(id: "5WoG0OXBoinswltKF9fy9V") {
+    sys {
+      id
+    }
+    title
+  }
+}
